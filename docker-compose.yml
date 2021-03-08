@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  nimbus.test:
+    image: ${DOCKER_REGISTRY-}nimbus
+    build:
+      context: .
+      dockerfile: nimbus.test/Dockerfile
