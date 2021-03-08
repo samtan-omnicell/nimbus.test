@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nimbus-ingress
+spec: 
+  type: LoadBalancer
+  selector: 
+    app: nimbus-backend
+  ports:
+  - name: http
+    port: 5000
+    targetPort: 80
+  - name: https
+    port: 5001
+    targetPort: 443
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nimbus-pod
+spec: 
+  selector:
+    matchLabels:
+      app: nimbus-backend
+  template:
+    metadata:
+      labels:
+        app: nimbus-backend
+    spec: 
+      containers:
+      - name: nimbus-backend
+        # image: nimbus-backend:latest
+        image: samtanomnicell/nimbus.test:v1
+        imagePullPolicy: "Always"
+        resources: 
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        - containerPort: 443

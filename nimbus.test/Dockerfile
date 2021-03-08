@@ -7,10 +7,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["nimbus.test/nimbus.test.csproj", "nimbus.test/"]
-RUN dotnet restore "nimbus.test/nimbus.test.csproj"
+COPY nimbus.test.csproj .
+RUN dotnet restore "nimbus.test.csproj"
 COPY . .
-WORKDIR "/src/nimbus.test"
 RUN dotnet build "nimbus.test.csproj" -c Release -o /app/build
 
 FROM build AS publish
