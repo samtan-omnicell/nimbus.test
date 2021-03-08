@@ -1,4 +1,4 @@
-﻿#Requirements:
+﻿# Requirements:
 1. ASP.net core 5 SDK; you can download it here:
 https://dotnet.microsoft.com/download/dotnet/5.0
 
@@ -8,7 +8,7 @@ https://www.docker.com/products/docker-desktop
 3. Docker Hub account with a public repository called "nimbus.test"
 https://hub.docker.com
 
-#To Run
+# To Run
 1. Build the docker image from the Dockerfile found in the nimbus.test directory
 - t argument sets the docker image name to "samtanomnicell/nimbus.test:v1"
 - the next argument tells docker to use the Dockerfile found in the nimbus.test directory
